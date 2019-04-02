@@ -1,0 +1,103 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+div,
+ul,
+li,
+p,
+header,
+nav {
+  box-sizing: border-box;
+}
+
+body {
+  min-width: 1280px;
+  font-size: 12px;
+  line-height: 20px;
+  background: #eef1f5;
+}
+
+h3 {
+  font-size: 16px;
+  line-height: 24px;
+}
+
+h4 {
+  font-size: 14px;
+  line-height: 20px;
+}
+
+p {
+  line-height: 20px;
+}
+
+a,
+a:active {
+  text-decoration: none;
+  outline: none;
+  cursor: pointer;
+  color: #333;
+}
+
+ul,
+li,
+ol {
+  list-style: none;
+}
+
+img {
+  outline: none;
+}
+
+/* 滚动条宽度 */
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+/* 滚动条的轨道，包含 thumb*/
+
+::-webkit-scrollbar-track {
+  border-radius: 6px;
+  box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.2);
+}
+
+/* 滚动条里面的小方块 */
+
+::-webkit-scrollbar-thumb {
+  border-radius: 6px;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.left {
+  float: left;
+}
+
+.right {
+  float: right;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.clearfix::after {
+  display: block;
+  clear: both;
+  content: '';
+}
+
+.mb-10 {
+  margin-bottom: 10px;
+}
