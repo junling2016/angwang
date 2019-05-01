@@ -17,7 +17,7 @@
   width: $navbar-width;
   height: 100%;
   text-align: center;
-  background: $color-navbar-bg;
+  background: #1c1e2e;
   float: left;
 }
 
@@ -93,7 +93,7 @@
   background: $color-navbar-bg;
   overflow-y: auto;
   overflow-x: hidden;
-  z-index: 6;
+  z-index: 4;
 }
 
 .view-container {
@@ -213,6 +213,12 @@
   font-size: 12px;
 }
 
+.el-date-editor .el-range__icon,
+.el-date-editor .el-range-separator,
+.el-date-editor .el-range__close-icon {
+  line-height: 24px;
+}
+
 .el-pagination {
   margin-top: 20px;
   text-align: right;
@@ -243,7 +249,7 @@
 
 .view-title {
   font-size: 16px;
-  margin-bottom: 20px;
+  margin: 10px 0 30px;
   font-weight: normal;
 }
 
@@ -404,17 +410,6 @@
   }
 }
 
-.el-form-item.is-success .el-input__inner,
-.el-form-item.is-success .el-input__inner:focus,
-.el-form-item.is-success .el-textarea__inner,
-.el-form-item.is-success .el-textarea__inner:focus {
-  border-color: #dcdfe6;
-}
-
-.el-form--inline .el-form-item {
-  margin-right: 20px;
-}
-
 .icon-button {
   padding: 7px;
   background: rgba(236, 238, 243, 0.6) !important;
@@ -466,4 +461,8 @@
   &+.href-link {
     margin-left: 20px;
   }
+}
+
+.el-table__footer-wrapper .cell {
+  color: red;
 }

@@ -160,7 +160,8 @@ export default {
         {
           label: "操作",
           prop: "operate",
-          width: 100
+          width: 100,
+          align: "center"
         }
       ],
 
@@ -168,7 +169,7 @@ export default {
 
       modal: {
         title: null,
-        width: 500,
+        width: 640,
         visible: false,
         props: null
       },
@@ -176,13 +177,13 @@ export default {
       exportModal: {
         title: "导出联系人",
         visible: false,
-        width: 500
+        width: 600
       },
 
       importModal: {
         title: "导入联系人",
         visible: false,
-        width: 500
+        width: 600
       }
     };
   },

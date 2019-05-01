@@ -5,20 +5,26 @@
       :closable="false"
       style="margin-bottom:20px;"
     ></el-alert>
-    <el-form label-width="100px">
+    <el-form label-width="90px">
       <el-form-item label="所属群组：">
         <el-select v-model="model.groupId" filterable>
           <el-option v-for="{id,label} in contactGroups" :key="id" :label="label" :value="id"></el-option>
         </el-select>
       </el-form-item>
     </el-form>
+    <!-- 导出组件，action为导出接口，params为导出所需参数 -->
+    <aw-export ref="export" action="/exportContacts" :params="model"></aw-export>
   </div>
 </template>
 
 <script>
-import { exportContacts } from "@/api/api";
+import AwExport from "@/components/AwExport";
 
 export default {
+  components: {
+    AwExport
+  },
+
   data() {
     return {
       model: {
@@ -50,12 +56,7 @@ export default {
     },
 
     async submit() {
-      try {
-        await exportContacts(this.model);
-      } catch (err) {
-        console.log(err);
-      }
-
+      this.$refs.export.submit();
       this.$emit("submitted");
     }
   }

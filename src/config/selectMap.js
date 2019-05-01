@@ -9,3 +9,8 @@ export const mdnMap = {
   '1': '电信',
   '2': '联通'
 }
+// 发送类型
+export const sendTypeMap = {
+  10000: '平台发送',
+  1000: '接口发送'
+}

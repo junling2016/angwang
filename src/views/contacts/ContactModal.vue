@@ -1,5 +1,5 @@
 <template>
-  <el-form ref="form" :model="model" :rules="rules" label-width="100px">
+  <el-form ref="form" :model="model" :rules="rules" label-width="90px">
     <el-form-item label="手机号码：" prop="mdn">
       <el-input v-model="model.mdn"></el-input>
     </el-form-item>

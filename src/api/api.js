@@ -13,6 +13,54 @@ export const fetchImmediateTasks = params => {
 }
 
 /**
+ * 获取短信回复列表
+ * @param {*} params
+ */
+export const fetchReplyList = params => {
+  return http.get(`${baseUrl}fetchReplyList`, {
+    params
+  })
+}
+
+/**
+ * 批量删除短信回复
+ * @param {*} params
+ */
+export const deleteReplys = params => {
+  return http.post(`${baseUrl}deleteReplys`, params)
+}
+
+/**
+ * 获取日发送统计
+ * @param {*} params
+ */
+export const fetchDailyStatistics = params => {
+  return http.get(`${baseUrl}fetchDailyStatistics`, {
+    params
+  })
+}
+
+/**
+ * 获取月发送统计
+ * @param {*} params
+ */
+export const fetchMonthlyStatistics = params => {
+  return http.get(`${baseUrl}fetchMonthlyStatistics`, {
+    params
+  })
+}
+
+/**
+ * 任务状态查询
+ * @param {*} params
+ */
+export const fetchTaskLog = params => {
+  return http.get(`${baseUrl}fetchTaskLog`, {
+    params
+  })
+}
+
+/**
  * 获取通讯录群组列表
  * @param {*} params
  */
@@ -91,11 +139,45 @@ export const removeContacts = params => {
 }
 
 /**
- * 导出联系人
+ * 获取黑名单列表
+ * @param {Object} params
+ */
+export const fetchBlacklist = params => {
+  return http.get(`${baseUrl}fetchBlacklist`, {
+    params
+  })
+}
+
+/**
+ * 批量删除黑名单
  * @param {*} params
  */
-export const exportContacts = params => {
-  return http.get(`${baseUrl}exportConcats`, {
+export const removeBlacklist = params => {
+  return http.post(`${baseUrl}removeBlacklist`, params)
+}
+
+/**
+ * 更新黑名单
+ * @param {*} params
+ */
+export const updateBlacklist = params => {
+  return http.post(`${baseUrl}updateBlacklist`, params)
+}
+
+/**
+ * 添加黑名单
+ * @param {*} params
+ */
+export const addBlacklist = params => {
+  return http.post(`${baseUrl}addBlacklist`, params)
+}
+
+/**
+ * 获取导出文件记录
+ * @param {*} params
+ */
+export const fetchDownloadlist = params => {
+  return http.get(`${baseUrl}fetchDownloadlist`, {
     params
   })
 }

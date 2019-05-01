@@ -11,7 +11,7 @@
       @closed="handleClosed"
     >
       <slot></slot>
-      <div slot="footer">
+      <div v-if="showFooter" slot="footer">
         <el-button @click="close">取消</el-button>
         <slot name="footer">
           <el-button type="primary" @click="handleConfirm">确定</el-button>
@@ -37,7 +37,12 @@ export default {
       type: [String, Number]
     },
 
-    elDialogProps: Object
+    elDialogProps: Object,
+
+    showFooter: {
+      type: Boolean,
+      default: true
+    }
   },
 
   data() {

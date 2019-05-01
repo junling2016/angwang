@@ -70,7 +70,8 @@ export default {
     showCellEmptyText: {
       type: Boolean,
       default: false
-    }
+    },
+    loading: Boolean
   },
 
   data() {
@@ -130,7 +131,11 @@ export default {
       handler: "fetch"
     },
 
-    api: "fetch"
+    api: "fetch",
+
+    isLoading(val) {
+      this.$emit("update:loading", val);
+    }
   },
 
   created() {
@@ -234,7 +239,6 @@ export default {
       }
 
       this.isLoading = true;
-
       try {
         const res = await api(params);
 
@@ -242,12 +246,11 @@ export default {
         this.tableData = res.data.rows || [];
         this.curPageProps.total = res.data.total || this.tableData.length;
         this.$emit("load-success", res);
-
-        this.isLoading = false;
       } catch (err) {
-        this.isLoading = false;
         console.log(err);
       }
+
+      this.isLoading = false;
     },
 
     refresh(resetPage = true) {

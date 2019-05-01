@@ -5,3 +5,20 @@
 .el-dialog__title {
   font-size: 16px;
 }
+
+.el-dialog__body {
+  padding: 30px 50px;
+  color: #333;
+}
+
+.el-dialog__footer {
+  padding: 10px 50px 30px;
+
+  .el-button {
+    padding: 11px 24px;
+  }
+
+  .el-button+.el-button {
+    margin-left: 20px;
+  }
+}

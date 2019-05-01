@@ -84,7 +84,7 @@ export default {
             },
             {
               title: "状态查询",
-              index: "/status"
+              index: "/statusQuery"
             }
           ]
         },
@@ -99,7 +99,7 @@ export default {
             },
             {
               title: "黑名单管理",
-              index: "/blackList"
+              index: "/blacklist"
             }
           ]
         },
