@@ -61,6 +61,10 @@ export default {
             {
               title: "常用短语",
               index: "/template"
+            },
+            {
+              title: "点播服务",
+              index: "/demand"
             }
           ]
         },

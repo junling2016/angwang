@@ -13,6 +13,32 @@ export const fetchImmediateTasks = params => {
 }
 
 /**
+ * 获取点播服务列表
+ * @param {*} params
+ */
+export const fetchDemandList = params => {
+  return http.get(`${baseUrl}fetchDemandList`, {
+    params
+  })
+}
+
+/**
+ * 新增点播服务
+ * @param {*} params
+ */
+export const addDemand = params => {
+  return http.post(`${baseUrl}addDemand`, params)
+}
+
+/**
+ * 批量删除点播服务
+ * @param {*} params
+ */
+export const deleteDemand = params => {
+  return http.post(`${baseUrl}deleteDemand`, params)
+}
+
+/**
  * 获取短信回复列表
  * @param {*} params
  */

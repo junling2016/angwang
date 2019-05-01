@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h2 class="view-title">状态查询</h2>
+    <h2 class="view-title">短信回复</h2>
     <el-card>
       <el-row>
         <el-col :span="20">
@@ -15,27 +15,7 @@
                 style="width: 120px"
               ></el-input>
             </el-form-item>
-            <el-form-item label="任务编号">
-              <el-input
-                v-model="filter.task_id"
-                clearable
-                placeholder="输入编号查询"
-                @keyup.enter.native="handleQuery"
-                @clear="handleQuery"
-                style="width: 120px"
-              ></el-input>
-            </el-form-item>
-            <el-form-item label="签名">
-              <el-input
-                v-model="filter.sign"
-                clearable
-                placeholder="输入签名查询"
-                @keyup.enter.native="handleQuery"
-                @clear="handleQuery"
-                style="width: 120px"
-              ></el-input>
-            </el-form-item>
-            <el-form-item label="提交时间">
+            <el-form-item label="回复时间">
               <el-date-picker v-model="filter.timeRange" type="datetimerange" :clearable="false"></el-date-picker>
             </el-form-item>
             <el-form-item>
@@ -48,8 +28,13 @@
             </el-form-item>
           </el-form>
         </el-col>
-        <el-col :span="4">
-          <el-button class="right" icon="iconfont icon-export6" @click="handleExport">导出</el-button>
+        <el-col :span="4" class="text-right">
+          <el-button
+            icon="iconfont icon-069delete"
+            :disabled="!selection.length"
+            @click="handleRemove(selection)"
+          >批量删除</el-button>
+          <el-button icon="iconfont icon-export6" @click="handleExport">导出</el-button>
         </el-col>
       </el-row>
 
@@ -61,17 +46,13 @@
         pagination
         :auto-request="false"
         :loading.sync="loading"
+        @selection-change="handleSelectionChange"
       >
-        <template slot="operate" slot-scoped="{row}">
-          <el-button type="text" @click="handleRemove(row)">删除</el-button>
+        <template slot="operate" slot-scope="{row}">
+          <el-button type="text" @click="handleRemove([row])">删除</el-button>
         </template>
       </aw-table>
     </el-card>
-
-    <!-- 详情弹框 -->
-    <aw-dialog :visible.sync="modal.visible" v-bind="modal">
-      <detail-modal :data="modal.props"></detail-modal>
-    </aw-dialog>
   </div>
 </template>
 
@@ -83,7 +64,7 @@ import { fetchReplyList, deleteReplys } from "@/api/api";
 import qs from "qs";
 
 export default {
-  name: "reply",
+  name: "smsReply",
 
   components: {
     AwTable
@@ -107,7 +88,8 @@ export default {
         },
         {
           label: "回复时间",
-          prop: "replyTime"
+          prop: "replyTime",
+          width: 140
         },
         {
           label: "通道号码",
@@ -116,12 +98,14 @@ export default {
         {
           label: "手机号",
           prop: "mdn",
-          showOverflowTooltip: true
+          showOverflowTooltip: true,
+          width: 120
         },
         {
           label: "是否被获取状态",
           prop: "status",
-          formatter: val => (val ? "是" : "否")
+          formatter: val => (val ? "是" : "否"),
+          width: 120
         },
         {
           label: "上行内容",
@@ -136,13 +120,7 @@ export default {
         }
       ],
 
-      modal: {
-        visible: false,
-        title: "详情",
-        width: "600px",
-        showFooter: false,
-        props: null
-      }
+      selection: []
     };
   },
 
@@ -166,8 +144,14 @@ export default {
       };
     },
 
+    handleSelectionChange(selection) {
+      this.selection = selection;
+    },
+
     async handleRemove(rows) {
       try {
+        await this.$confirm("确认删除？", "提示", { type: "warning" });
+
         const ids = rows.map(row => row.id);
         const { message } = await deleteReplys({ ids });
 

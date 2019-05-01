@@ -4,7 +4,8 @@ import Home from './views/Home'
 import Setting from './views/Setting'
 import Sms from './views/Sms'
 import ImmediateTasks from './views/ImmediateTasks'
-import Reply from './views/Reply'
+import Demand from './views/demand'
+import SmsReply from './views/SmsReply'
 import DailyStatistics from './views/DailyStatistics'
 import MonthlyStatistics from './views/MonthlyStatistics'
 import StatusQuery from './views/statusQuery'
@@ -55,12 +56,21 @@ export default new Router({
       }
     },
     {
-      path: '/reply',
-      name: 'reply',
-      component: Reply,
+      path: '/demand',
+      name: 'demand',
+      component: Demand,
+      meta: {
+        title: '点播服务',
+        name: Demand.name
+      }
+    },
+    {
+      path: '/smsReply',
+      name: 'smsReply',
+      component: SmsReply,
       meta: {
         title: '短信回复',
-        name: Reply.name
+        name: SmsReply.name
       }
     },
     {
@@ -117,5 +127,12 @@ export default new Router({
         name: Download.name
       }
     }
-  ]
+  ],
+  scrollBehavior(to, from, savedPosition) {
+    if (savedPosition) {
+      return savedPosition
+    } else {
+      return { x: 0, y: 0 }
+    }
+  }
 })
