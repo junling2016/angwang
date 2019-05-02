@@ -29,7 +29,7 @@
         :auto-request="false"
       >
         <template v-slot:operate="{row}">
-          <el-button type="text" @click="handleResend(row)">重发</el-button>
+          <el-button type="text">未知操作</el-button>
         </template>
       </aw-table>
     </el-card>
@@ -39,16 +39,16 @@
 <script>
 import moment from "moment";
 import AwTable from "../components/AwTable";
-import { fetchImmediateTasks, resendImmediateTask } from "../api/api";
+import { fetchAppointmentTasks, resendImmediateTask } from "../api/api";
 
 export default {
-  name: "immediateTasks",
+  name: "appointmentTasks",
 
   components: { AwTable },
 
   data() {
     return {
-      fetchApi: fetchImmediateTasks,
+      fetchApi: fetchAppointmentTasks,
       filter: {
         task_id: "",
         content: "",
@@ -86,14 +86,6 @@ export default {
           formatter: (val, row) => {
             return val + "/" + row.failCount;
           }
-        },
-        {
-          label: "移动/联通/电信条数",
-          prop: "cmcc",
-          formatter: (val, row) => {
-            return val + "/" + row.cucc + "/" + row.ctcc;
-          },
-          width: 140
         },
         {
           label: "提交类型",
@@ -137,9 +129,7 @@ export default {
           type: "warning"
         });
 
-        const { message } = await resendImmediateTask({
-          id: row.id
-        });
+        const { message } = await resendImmediateTask({ id: row.id });
 
         this.$message.success(message);
       } catch (err) {

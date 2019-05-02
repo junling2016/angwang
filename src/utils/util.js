@@ -20,3 +20,27 @@ export const arrayToTree = arr => {
 
   return parentNodes
 }
+
+export const insertText = (obj, str) => {
+  if (document.selection) {
+    const sel = document.selection.createRange()
+    sel.text = str
+  } else if (
+    typeof obj.selectionStart === 'number' &&
+    typeof obj.selectionEnd === 'number'
+  ) {
+    const startPos = obj.selectionStart
+    const endPos = obj.selectionEnd
+    const tmpStr = obj.value
+    let cursorPos = startPos
+
+    obj.value =
+      tmpStr.substring(0, startPos) +
+      str +
+      tmpStr.substring(endPos, tmpStr.length)
+    cursorPos += str.length
+    obj.selectionStart = obj.selectionEnd = cursorPos
+  } else {
+    obj.value += str
+  }
+}

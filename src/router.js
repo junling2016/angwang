@@ -1,9 +1,13 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Home from './views/Home'
+import Home from './views/home'
 import Setting from './views/Setting'
-import Sms from './views/Sms'
+import Sms from './views/sms'
+import DynamicSms from './views/dynamicSms'
+import Template from './views/template'
 import ImmediateTasks from './views/ImmediateTasks'
+import AppointmentTasks from './views/AppointmentTasks'
+import FileSendHistory from './views/FileSendHistory'
 import Demand from './views/demand'
 import SmsReply from './views/SmsReply'
 import DailyStatistics from './views/DailyStatistics'
@@ -47,12 +51,48 @@ export default new Router({
       }
     },
     {
+      path: '/dynamicSms',
+      name: 'dynamicSms',
+      component: DynamicSms,
+      meta: {
+        title: '动态短信',
+        name: DynamicSms.name
+      }
+    },
+    {
+      path: '/template',
+      name: 'template',
+      component: Template,
+      meta: {
+        title: '常用短语',
+        name: Template.name
+      }
+    },
+    {
       path: '/immediateTasks',
       name: 'immediateTasks',
       component: ImmediateTasks,
       meta: {
         title: '即时任务列表',
         name: ImmediateTasks.name
+      }
+    },
+    {
+      path: '/appointmentTasks',
+      name: 'appointmentTasks',
+      component: AppointmentTasks,
+      meta: {
+        title: '预约任务列表',
+        name: AppointmentTasks.name
+      }
+    },
+    {
+      path: '/fileSendHistory',
+      name: 'fileSendHistory',
+      component: FileSendHistory,
+      meta: {
+        title: '文件发送历史记录',
+        name: FileSendHistory.name
       }
     },
     {

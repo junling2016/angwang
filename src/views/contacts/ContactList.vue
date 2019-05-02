@@ -55,7 +55,7 @@
       :auto-request="false"
       @selection-change="handleSelectionChange"
     >
-      <template slot="operate" slot-scope="{row}">
+      <template v-slot:operate="{row}">
         <el-button type="text" @click="handleModify(row)">编辑</el-button>
         <el-button type="text" @click="handleRemove([row])">删除</el-button>
       </template>

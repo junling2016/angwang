@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import { fetchContactGroups, fetchDepartments } from '@/api/api'
+import { fetchUserInfo, fetchContactGroups, fetchDepartments } from '@/api/api'
 
 Vue.use(Vuex)
 
@@ -15,7 +15,7 @@ const store = new Vuex.Store({
 
   mutations: {
     setUserInfo(state, userInfo) {
-      state.cuserInfo = userInfo
+      state.userInfo = userInfo
     },
 
     setContactGroup(state, groups) {
@@ -28,6 +28,19 @@ const store = new Vuex.Store({
   },
 
   actions: {
+    /**
+     * 获取用户信息
+     * @param {Context} param0
+     */
+    async fetchUserInfo({ commit }) {
+      try {
+        const { data } = await fetchUserInfo()
+        commit('setUserInfo', data)
+      } catch (err) {
+        console.log(err)
+      }
+    },
+
     /**
      * 获取通讯录群组列表数据
      */

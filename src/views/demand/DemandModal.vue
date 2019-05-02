@@ -37,8 +37,6 @@ export default {
   },
 
   methods: {
-    timeFormat() {},
-
     async submit() {
       try {
         await this.$refs.form.validate();

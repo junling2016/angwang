@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h2 class="view-title">客户通讯录</h2>
+    <h2 class="view-title">{{$route.meta.title}}</h2>
     <el-card class="card-barrier" style="height: 660px;">
       <div class="card-sidebar">
         <div class="card-sidebar-header">

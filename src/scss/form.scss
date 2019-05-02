@@ -32,3 +32,17 @@
     color: #888;
   }
 }
+
+.form-vertical {
+
+  .el-form-item__label {
+    text-align: left;
+    margin-bottom: 5px;
+  }
+
+  .el-form-item__label,
+  .el-form-item__content {
+    display: block;
+    float: none;
+  }
+}

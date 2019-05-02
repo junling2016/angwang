@@ -97,7 +97,7 @@
 }
 
 .view-container {
-  padding: 20px;
+  padding: 20px 20px 80px;
 }
 
 .popover-nav {
@@ -263,6 +263,14 @@
 
 .el-card {
   border: 0;
+
+  &+.el-card {
+    margin-top: 20px;
+  }
+}
+
+.el-card__header {
+  font-size: 14px;
 }
 
 .el-tabs--card>.el-tabs__header .el-tabs__item .el-icon-close {
@@ -281,6 +289,7 @@
   position: fixed;
   top: 28px;
   left: $navbar-width + 20;
+  right: 300px;
   z-index: 7;
 
   .el-tabs__header {
@@ -324,6 +333,25 @@
   .el-tabs__nav-wrap {
     margin-bottom: 0;
   }
+}
+
+.el-tabs__nav-next,
+.el-tabs__nav-prev {
+  line-height: 32px;
+  background: #eff0f4;
+  border: 1px solid #E4E7ED;
+}
+
+.el-tabs__nav-next {
+  border-top-right-radius: 3px;
+}
+
+.el-tabs__nav-prev {
+  border-top-left-radius: 3px;
+}
+
+.el-tabs__nav-wrap.is-scrollable {
+  padding: 0 16px;
 }
 
 .el-card.card-barrier {
@@ -465,4 +493,99 @@
 
 .el-table__footer-wrapper .cell {
   color: red;
+}
+
+.col-block-icon {
+  float: left;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  line-height: 56px;
+  text-align: center;
+  margin-right: 20px;
+
+  i {
+    font-size: 28px;
+    color: #fff;
+  }
+}
+
+.col-block-right {
+  p {
+    line-height: 28px;
+  }
+
+
+  strong {
+    font-size: 14px;
+    margin-right: 5px;
+    font-weight: normal;
+  }
+}
+
+.chart-box {
+  height: 400px;
+}
+
+.link-block {
+  height: 80px;
+  background: #f6f7fb;
+  margin-bottom: 20px;
+
+  .link-block-icon {
+    float: left;
+    width: 80px;
+    height: 100%;
+    background: #eceff9;
+    text-align: center;
+    line-height: 80px;
+
+    i {
+      color: $color-primary;
+      font-size: 32px;
+    }
+  }
+
+  .link-block-name {
+    float: left;
+    padding: 0 20px;
+    line-height: 80px;
+
+    a:hover {
+      color: $color-primary;
+    }
+  }
+}
+
+.editor-box {
+  border: $normal-border;
+  border-radius: 4px;
+
+  .editor-box-header,
+  .editor-box-footer {
+    padding: 4px 20px;
+    color: #888;
+  }
+
+  .editor-box-header {
+    border-bottom: $normal-border;
+  }
+
+  .editor-box-footer {
+    border-top: $normal-border;
+
+    strong {
+      color: red;
+    }
+  }
+
+  .editor-box-body {
+    .el-textarea__inner {
+      border: 0;
+    }
+  }
+}
+
+.description p {
+  margin-bottom: 10px;
 }

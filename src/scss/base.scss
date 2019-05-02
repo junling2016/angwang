@@ -27,6 +27,7 @@ h3 {
 h4 {
   font-size: 14px;
   line-height: 20px;
+  font-weight: normal;
 }
 
 p {
@@ -100,4 +101,32 @@ img {
 
 .mb-10 {
   margin-bottom: 10px;
+}
+
+.mb-20 {
+  margin-bottom: 20px;
+}
+
+.text-link {
+  color: $color-primary;
+}
+
+.text-light {
+  color: $color-text-light;
+}
+
+.bg-success {
+  background: $color-success;
+}
+
+.bg-warning {
+  background: $color-warning;
+}
+
+.bg-primary {
+  background: $color-primary;
+}
+
+.bg-purple {
+  background: rgb(113, 76, 162);
 }

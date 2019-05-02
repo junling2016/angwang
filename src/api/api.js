@@ -3,11 +3,127 @@ import http from './index'
 const baseUrl = '/api/'
 
 /**
+ * 获取用户信息
+ * @param {*} params
+ */
+export const fetchUserInfo = params => {
+  return http.get(`${baseUrl}fetchUserInfo`, {
+    params
+  })
+}
+
+/**
+ * 获取短信发送统计报表
+ * @param {*} params
+ */
+export const fetchSendReport = params => {
+  return http.get(`${baseUrl}fetchSendReport`, {
+    params
+  })
+}
+
+/**
+ * 短信发送
+ * @param {*} params
+ */
+export const sendMessage = params => {
+  return http.post(`${baseUrl}sendMessage`, params)
+}
+
+/**
+ * 获取文件发送历史记录
+ * @param {*} params
+ */
+export const fetchFileSendLog = params => {
+  return http.get(`${baseUrl}fetchFileSendLog`, {
+    params
+  })
+}
+
+/**
+ * 获取常用短语类别列表
+ * @param {*} params
+ */
+export const fetchTemplateGroups = params => {
+  return http.get(`${baseUrl}fetchTemplateGroups`, {
+    params
+  })
+}
+
+/**
+ * 新增常用短语类别
+ * @param {*} params
+ */
+export const addTemplateGroup = params => {
+  return http.post(`${baseUrl}addTemplateGroup`, params)
+}
+
+/**
+ * 删除常用短语类别
+ * @param {*} params
+ */
+export const deleteTemplateGroup = params => {
+  return http.post(`${baseUrl}deleteTemplateGroup`, params)
+}
+
+/**
+ * 获取常用短语类别列表
+ * @param {*} params
+ */
+export const fetchTemplateList = params => {
+  return http.get(`${baseUrl}fetchTemplateList`, {
+    params
+  })
+}
+
+/**
+ * 新增常用短语
+ * @param {*} params
+ */
+export const addTemplate = params => {
+  return http.post(`${baseUrl}addTemplate`, params)
+}
+
+/**
+ * 删除常用短语
+ * @param {*} params
+ */
+export const deleteTemplate = params => {
+  return http.post(`${baseUrl}deleteTemplate`, params)
+}
+
+/**
+ * 编辑常用短语
+ * @param {*} params
+ */
+export const updateTemplate = params => {
+  return http.post(`${baseUrl}updateTemplate`, params)
+}
+
+/**
  * 获取即时任务列表
  * @param {*} params
  */
 export const fetchImmediateTasks = params => {
   return http.get(`${baseUrl}fetchImmediateTasks`, {
+    params
+  })
+}
+
+/**
+ * 即使任务重新发送
+ * @param {*} params
+ */
+export const resendImmediateTask = params => {
+  return http.post(`${baseUrl}resendImmediateTask`, params)
+}
+
+/**
+ * 获取预约任务列表
+ * @param {*} params
+ */
+export const fetchAppointmentTasks = params => {
+  return http.get(`${baseUrl}fetchAppointmentTasks`, {
     params
   })
 }

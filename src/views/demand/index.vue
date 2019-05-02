@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h2 class="view-title">点播服务</h2>
+    <h2 class="view-title">{{$route.meta.title}}</h2>
     <el-card>
       <el-row>
         <el-col :span="20">
@@ -55,7 +55,7 @@
         :loading.sync="loading"
         @selection-change="handleSelectionChange"
       >
-        <template slot="operate" slot-scope="{row}">
+        <template v-slot:operate="{row}">
           <el-button type="text" @click="handleRemove([row])">删除</el-button>
         </template>
       </aw-table>

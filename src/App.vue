@@ -48,6 +48,7 @@ export default {
   },
 
   created() {
+    this.$store.dispatch("fetchUserInfo");
     this.updateTabs();
   },
 
@@ -63,6 +64,11 @@ export default {
           viewName: meta.name
         });
       }
+
+      // tab做了多开限制，最多只允许开8个选项卡，超出的话将按照打开顺序先后移除
+      // if (this.tabs.length > 8) {
+      //   this.tabs.shift();
+      // }
 
       this.active = path;
     },

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h2 class="view-title">下载中心</h2>
+    <h2 class="view-title">{{$route.meta.title}}</h2>
     <el-card>
       <el-row>
         <el-form class="left" inline>
@@ -36,8 +36,8 @@
         :auto-request="false"
         :loading.sync="loading"
       >
-        <template slot="operate" slot-scope="{row}">
-          <el-button type="text" @click="handleRemove(row)">删除</el-button>
+        <template v-slot:operate="{row}">
+          <el-button type="text" @click="download(row)">下载</el-button>
         </template>
       </aw-table>
     </el-card>
@@ -130,7 +130,7 @@ export default {
     /**
      * 删除
      */
-    async handleRemove(row) {
+    async download(row) {
       console.log(row);
     }
   }

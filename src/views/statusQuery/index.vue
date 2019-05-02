@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h2 class="view-title">状态查询</h2>
+    <h2 class="view-title">{{$route.meta.title}}</h2>
     <el-card>
       <el-row>
         <el-col :span="20">
@@ -62,7 +62,7 @@
         :auto-request="false"
         :loading.sync="loading"
       >
-        <template slot="operate" slot-scoped="{row}">
+        <template v-slot:operate="{row}">
           <el-button type="text" @click="handleDetail(row)">查看详情</el-button>
         </template>
       </aw-table>

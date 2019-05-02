@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h2 class="view-title">日发送统计</h2>
+    <h2 class="view-title">{{$route.meta.title}}</h2>
     <el-card>
       <el-row>
         <el-form class="left" inline>

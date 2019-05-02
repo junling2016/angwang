@@ -63,6 +63,10 @@ export default {
               index: "/template"
             },
             {
+              title: "文件发送历史记录",
+              index: "/fileSendHistory"
+            },
+            {
               title: "点播服务",
               index: "/demand"
             }
