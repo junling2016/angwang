@@ -589,3 +589,51 @@
 .description p {
   margin-bottom: 10px;
 }
+
+.phone-box {
+  position: relative;
+  width: 300px;
+  padding: 210px 26px 0 60px;
+  transform: scale(0.8, 0.8);
+  transform-origin: top left;
+
+  img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 0;
+    width: 100%;
+  }
+
+  .content-warpper {
+    position: relative;
+    z-index: 1;
+
+    .content {
+      max-height: 292px;
+      padding: 8px 8px 20px;
+      border-radius: 15px;
+      background: #00cb47;
+      color: #fff;
+      overflow: hidden;
+      word-break: break-all;
+    }
+
+    // &:after {
+    //   display: block;
+    //   padding: 2px 4px;
+    //   content: '...';
+    //   position: absolute;
+    //   top: 266px;
+    //   right: 8px;
+    //   background: #00cb47;
+    //   color: #fff;
+    // }
+
+    svg {
+      position: absolute;
+      bottom: 0;
+      right: -10px;
+    }
+  }
+}

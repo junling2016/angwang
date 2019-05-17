@@ -11,57 +11,64 @@
         </div>
       </div>
       <div class="card-right">
-        <el-form ref="form" :model="model" :rules="rules" class="form-vertical">
-          <el-form-item label="编辑短信内容：" prop="content">
-            <sms-content-editor
-              ref="contentEditor"
-              v-model="model.content"
-              :signature="userInfo.signature"
-              placeholder="请输入短信内容"
-            >
-              <div slot="header">
-                <el-button type="text" @click="handleInsert('${#}')">插入手机后四位</el-button>
-                <el-button type="text" @click="handleInsert('${R}')">插入手机归属地</el-button>
-              </div>
-            </sms-content-editor>
-          </el-form-item>
+        <el-row :gutter="80">
+          <el-col :span="15">
+            <el-form ref="form" :model="model" :rules="rules" class="form-vertical">
+              <el-form-item label="编辑短信内容：" prop="content">
+                <sms-content-editor
+                  ref="contentEditor"
+                  v-model="model.content"
+                  :signature="userInfo.signature"
+                  placeholder="请输入短信内容"
+                >
+                  <div slot="header">
+                    <el-button type="text" @click="handleInsert('${#}')">插入手机后四位</el-button>
+                    <el-button type="text" @click="handleInsert('${R}')">插入手机归属地</el-button>
+                  </div>
+                </sms-content-editor>
+              </el-form-item>
 
-          <el-form-item prop="appointTime" :rules="dateTimeRules">
-            <el-checkbox v-model="model.isAppoint">预约发送</el-checkbox>
+              <el-form-item prop="appointTime" :rules="dateTimeRules">
+                <el-checkbox v-model="model.isAppoint">预约发送</el-checkbox>
 
-            <el-radio-group v-if="model.isAppoint" v-model="model.appointType">
-              <el-radio :label="1">
-                预约时间：
-                <el-date-picker
-                  v-model="model.appointTime"
-                  type="datetime"
-                  :disabled="model.appointType !== 1"
-                  placeholder="选择日期时间"
-                  style="width:200px;"
-                ></el-date-picker>
-              </el-radio>
-              <el-radio :label="2">生日发送</el-radio>
-            </el-radio-group>
-          </el-form-item>
+                <el-radio-group v-if="model.isAppoint" v-model="model.appointType">
+                  <el-radio :label="1">
+                    预约时间：
+                    <el-date-picker
+                      v-model="model.appointTime"
+                      type="datetime"
+                      :disabled="model.appointType !== 1"
+                      placeholder="选择日期时间"
+                      style="width:200px;"
+                    ></el-date-picker>
+                  </el-radio>
+                  <el-radio :label="2">生日发送</el-radio>
+                </el-radio-group>
+              </el-form-item>
 
-          <el-form-item label="请输入短信接收号码：" prop="mdnList" required>
-            <sms-content-editor
-              ref="mdnEditor"
-              v-model="model.mdnList"
-              :show-footer="false"
-              placeholder="手机号码/群组名，多个请用[;]隔开。最多只能输入1000个号码或群组，多于1000请采用导入方式"
-            >
-              <div v-if="!(model.isAppoint && model.appointType===2)" slot="header">
-                <el-button type="text" @click="importModalVisible = true">导入接收号码</el-button>
-              </div>
-            </sms-content-editor>
-          </el-form-item>
+              <el-form-item label="请输入短信接收号码：" prop="mdnList" required>
+                <sms-content-editor
+                  ref="mdnEditor"
+                  v-model="model.mdnList"
+                  :show-footer="false"
+                  placeholder="手机号码/群组名，多个请用[;]隔开。最多只能输入1000个号码或群组，多于1000请采用导入方式"
+                >
+                  <div v-if="!(model.isAppoint && model.appointType===2)" slot="header">
+                    <el-button type="text" @click="importModalVisible = true">导入接收号码</el-button>
+                  </div>
+                </sms-content-editor>
+              </el-form-item>
 
-          <el-form-item>
-            <el-button type="primary" @click="handleSubmit">发 送</el-button>
-            <el-button @click="handleReset">重 置</el-button>
-          </el-form-item>
-        </el-form>
+              <el-form-item>
+                <el-button type="primary" @click="handleSubmit">发 送</el-button>
+                <el-button @click="handleReset">重 置</el-button>
+              </el-form-item>
+            </el-form>
+          </el-col>
+          <el-col :span="9">
+            <phone-sms :value="model.content"></phone-sms>
+          </el-col>
+        </el-row>
       </div>
     </el-card>
 
@@ -77,6 +84,7 @@ import ContactGroupTree from "./ContactGroupTree";
 import SmsContentEditor from "@/components/SmsContentEditor";
 import AwDialog from "@/components/AwDialog";
 import ImportModal from "./ImportModal";
+import PhoneSms from "@/components/PhoneSms";
 import rules from "@/utils/rules";
 
 export default {
@@ -86,7 +94,8 @@ export default {
     ContactGroupTree,
     SmsContentEditor,
     ImportModal,
-    AwDialog
+    AwDialog,
+    PhoneSms
   },
 
   data() {
